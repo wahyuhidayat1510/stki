@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.3
+-- version 4.9.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 16, 2020 at 11:25 AM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.4.11
+-- Waktu pembuatan: 22 Okt 2020 pada 07.47
+-- Versi server: 10.4.10-MariaDB
+-- Versi PHP: 7.3.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -24,7 +25,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `berita`
+-- Struktur dari tabel `berita`
 --
 
 CREATE TABLE `berita` (
@@ -35,7 +36,7 @@ CREATE TABLE `berita` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `berita`
+-- Dumping data untuk tabel `berita`
 --
 
 INSERT INTO `berita` (`id`, `judul`, `isi`, `url`) VALUES
@@ -63,7 +64,7 @@ INSERT INTO `berita` (`id`, `judul`, `isi`, `url`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `stopword`
+-- Struktur dari tabel `stopword`
 --
 
 CREATE TABLE `stopword` (
@@ -71,7 +72,7 @@ CREATE TABLE `stopword` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `stopword`
+-- Dumping data untuk tabel `stopword`
 --
 
 INSERT INTO `stopword` (`stopword`) VALUES
@@ -99,7 +100,34 @@ INSERT INTO `stopword` (`stopword`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `token`
+-- Struktur dari tabel `tfidf`
+--
+
+CREATE TABLE `tfidf` (
+  `id` varchar(5) NOT NULL,
+  `no` varchar(5) NOT NULL,
+  `kata` varchar(50) NOT NULL,
+  `freq` varchar(5) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `tfidf`
+--
+
+INSERT INTO `tfidf` (`id`, `no`, `kata`, `freq`) VALUES
+('1', '1', 'this', '1'),
+('1', '2', 'is', '1'),
+('1', '3', 'a', '2'),
+('1', '4', 'sample', '1'),
+('2', '1', 'this', '1'),
+('2', '2', 'is', '1'),
+('2', '3', 'another', '2'),
+('2', '4', 'example', '3');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `token`
 --
 
 CREATE TABLE `token` (
@@ -115,23 +143,23 @@ CREATE TABLE `token` (
 --
 
 --
--- Indexes for table `berita`
+-- Indeks untuk tabel `berita`
 --
 ALTER TABLE `berita`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `token`
+-- Indeks untuk tabel `token`
 --
 ALTER TABLE `token`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `berita`
+-- AUTO_INCREMENT untuk tabel `berita`
 --
 ALTER TABLE `berita`
   MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
